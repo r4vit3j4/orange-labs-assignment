@@ -25,23 +25,30 @@ async function run(): Promise<void> {
     // call a function which fills the you sell input
     await fillSellQuantity({ page, quantity: constants.sellQuantity });
 
-    // call a function which selects the WBTC token in sell field
+    // call a function which selects the selling token
     await selectToken({
       page,
       type: "sell",
       tokenName: constants.sellToken,
-    }).then(async () => {
-      await selectToken({
-        page,
-        type: "buy",
-        tokenName: constants.buyToken,
-      });
     });
 
+    // call a function which selects the buying token
+    await selectToken({
+      page,
+      type: "buy",
+      tokenName: constants.buyToken,
+    });
+
+    // call a function which selects the second route
     await selectSecondRoute({ page });
+
+    // finished executing
+    console.log("The program finished executing successfully...");
   } catch (error) {
+    // logging any error if occured
     console.log("An error occurred : ", error);
   }
 }
 
+// calling our main function
 run();

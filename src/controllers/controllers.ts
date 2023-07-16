@@ -7,7 +7,10 @@ import {
 } from "types";
 
 export async function selectChain({ page, chainName }: ISelectChainProps) {
+  // Select the input for selecting the chain
   await page.type("#react-select-2-input", chainName);
+
+  // Pressing enter to select the top most result which is our required chainName
   await page.keyboard.press("Enter");
 }
 
@@ -19,6 +22,8 @@ export async function fillSellQuantity({
 
   //   Select the Sell input
   const youSellInputField = inputFields[0];
+
+  // double clicking the input box to highlight the default input value for replacing with our quantity
   await youSellInputField.click({ clickCount: 2 });
 
   //   Fill the input box with quantity
@@ -47,6 +52,7 @@ export async function selectToken({
   // select the token inputs
   const tokenInput = await page.$$(".chakra-input.css-s1d1f4");
   await tokenInput[0].click();
+
   //  Enter the token name in the token input
   await tokenInput[0].type(tokenName);
 
@@ -74,6 +80,7 @@ export async function selectSecondRoute({ page }: ISelectSecondRouteProps) {
 
     // select the routes divs
     const elements = await page.$$(".sc-d413ea6e-0.ppUJr.RouteWrapper");
+
     // if there are are more than 1 routes then we will click on the second route
     if (elements.length > 1) {
       await elements[1].click();
