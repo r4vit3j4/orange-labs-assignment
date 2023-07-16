@@ -1,0 +1,21 @@
+{
+  "name": "orange-labs-assignment",
+  "version": "1.0.0",
+  "description": "Orange Labs Assignment - Basic automation using Puppeteer",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "node ./build/index.js",
+    "dev": "pnpm build && pnpm start",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "Ravi Teja <itsraviteja.r@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.4.2",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "puppeteer": "^20.8.2"
+  }
+}
